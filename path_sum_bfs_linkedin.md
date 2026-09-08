@@ -1,6 +1,6 @@
 **Mastering Binary Trees: Solving Path Sum with Breadth-First Search (BFS) 🌲**
 
-When solving **LeetCode 112 (Path Sum)**, most developers instinctively reach for Depth-First Search (DFS). But what if the tree is vast, and a valid path sum exists at a shallow depth?
+When solving a path sum problem on a tree, you might be inclned to instinctively reach for Depth-First Search (DFS). Indeed, the three prior installations of this series did just that. But what if the tree is vast, and a valid path sum exists at a shallow depth?
 
 This is where **Iterative Breadth-First Search (BFS)** shines!
 
@@ -8,7 +8,7 @@ This is where **Iterative Breadth-First Search (BFS)** shines!
 
 ### The Strategy: Level-by-Level Path Exploration
 
-Using a FIFO queue (`collections.deque`), we explore all nodes layer-by-layer while tracking the cumulative path sum for each branch:
+Using a FIFO queue (e.g. using `collections.deque`), we explore all nodes layer-by-layer while tracking the cumulative path sum for each branch:
 - Enqueue `(root, root.val)`.
 - Dequeue `(node, curr_sum)` from the front of the queue.
 - If the node is a leaf and `curr_sum == targetSum`, return `True` immediately.
@@ -58,4 +58,4 @@ def has_path_sum_bfs(root: Optional[TreeNode], targetSum: int) -> bool:
 
 When do you choose BFS over DFS for tree-based search problems? Share your thoughts below! 👇
 
-#SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #BFS #BreadthFirstSearch #TechInterview #CleanCode
+#LearningInPublic #SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #DFS #BFS #BreadthFirstSearch #TechInterview #CleanCode

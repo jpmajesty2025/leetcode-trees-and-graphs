@@ -1,8 +1,9 @@
 **Mastering Binary Trees: Tracking Path Maximums with Recursive DFS 🌲**
 
-In **LeetCode 1448 (Count Good Nodes in Binary Tree)**, a node is considered "good" if no node along the path from the root has a strictly greater value.
+**Problem statement:**
+Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X. Return the number of good nodes in the binary tree.
 
-This is a prime example of a **top-down state propagation** problem. Here is how to solve it with clean, recursive Depth-First Search:
+This is **top-down state propagation** and we can solve it with clean, recursive Depth-First Search:
 
 ---
 
@@ -37,14 +38,12 @@ def good_nodes(root: Optional[TreeNode]) -> int:
 ### Complexity Analysis
 
 - ⏱️ **Time Complexity:** **O(N)** — every node in the tree is visited exactly once.
-- 💾 **Space Complexity:** **O(H)** — call stack depth proportional to tree height (`O(log N)` balanced, `O(N)` skewed).
+- 💾 **Space Complexity:** **O(H)** — call stack depth proportional to tree height H -> `O(log N)` balanced, `O(N)` skewed (worst case).
 
 ---
 
 ### Key Takeaway
 
-Top-down recursive DFS is the most intuitive fit when a node's validity depends solely on a monotonic summary (like `max_so_far` or `path_sum`) inherited from ancestors.
+Top-down recursive DFS is the most intuitive fit when a node's validity depends solely on a monotonic summary (like `max_so_far` or `path_sum`) flowing down from ancestors.
 
-How do you approach state passing in recursive tree algorithms? Let’s connect in the comments! 👇
-
-#SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #Recursion #CleanCode #TechInterview
+#LearningInPublic #SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #Recursion #CleanCode #TechInterview

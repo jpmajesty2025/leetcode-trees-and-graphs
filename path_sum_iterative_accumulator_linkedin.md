@@ -1,6 +1,6 @@
 **Mastering Binary Trees: Iterative DFS with Path Accumulator 🌲**
 
-When traversing tree structures to find path sums (**LeetCode 112**), one of the most natural mental models is the **accumulator pattern**: tracking the running sum as you descend from the root.
+When traversing tree structures to find path sums, a natural mental models is the **accumulator pattern**: tracking the running sum as you descend from the root.
 
 Here is how to implement this cleanly and safely using an **Iterative DFS with an Accumulator**.
 
@@ -53,8 +53,8 @@ def has_path_sum_accumulator(root: Optional[TreeNode], targetSum: int) -> bool:
 | **Accumulator** | Prefix sum from root (`0 -> sum`) | `curr_sum == targetSum` |
 | **Subtraction** | Remaining budget (`targetSum -> 0`) | `remaining == 0` |
 
-Both paradigms achieve optimal performance, but the accumulator approach often aligns more directly with logging and path reconstruction.
+Both paradigms achieve optimal performance, but the accumulator approach often aligns more directly with logging and path reconstruction. (Maybe more on this, and more generally, the pros and cons of each approach in real-world systems in a later post.)
 
 How do you approach branch state management in non-recursive algorithms? Let's discuss below! 👇
 
-#SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #DFS #CleanCode #TechInterview
+#LearningInPublic #SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #DFS #CleanCode #TechInterview

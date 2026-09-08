@@ -1,8 +1,11 @@
 **Mastering Binary Trees: Iterative DFS for Safe Path State Propagation 🌲**
 
-Recursive algorithms are elegant, but in high-throughput or production systems, deep skewed trees can trigger a `RecursionError` by exceeding the execution call stack limit.
+Same problem as yesterday:
+Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X. Return the number of good nodes in the binary tree
 
-Here is how to solve **LeetCode 1448 (Count Good Nodes in Binary Tree)** using an **Iterative DFS with an Explicit Heap Stack**.
+A recursive algorithm - our approach yesterday - is elegant. But what if you are dealing with high-throughput requirements in a production system? If you're facing a deep, skewed tree, this can trigger a `RecursionError` when you exceed the execution call stack limit.
+
+Here is how to solve this problem without recursion, instead using an **Iterative DFS with an Explicit Heap Stack**.
 
 ---
 
@@ -52,4 +55,4 @@ Whenever an algorithm requires propagating branch-specific context down a tree, 
 
 Do you prefer converting recursive traversals to iterative stacks in production? Share your experience below! 👇
 
-#SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #DFS #SystemDesign #TechInterview
+#LearningInPublic #SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #DFS #Stack #LIFO #SystemDesign #TechInterview

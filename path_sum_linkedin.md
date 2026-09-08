@@ -1,6 +1,6 @@
 **Mastering Binary Trees: The Power of Recursive Subtraction for Path Sum 🌲**
 
-Finding whether a binary tree has a root-to-leaf path that sums to a target value (**LeetCode 112: Path Sum**) is a classic tree traversal problem. While many developers reach for an accumulator variable, there is a much cleaner, more functional way to solve it.
+Finding whether a binary tree has a root-to-leaf path that sums to a target value is a classic tree traversal problem. While many developers reach for an accumulator variable, there is a much cleaner, more functional way to solve it.
 
 Here is an in-depth breakdown of the **Recursive Direct Subtraction** pattern:
 
@@ -43,4 +43,4 @@ def has_path_sum(root: Optional[TreeNode], targetSum: int) -> bool:
 
 What’s your favorite recursion pattern for tree problems? Let’s connect and discuss below! 👇
 
-#SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #Recursion #CleanCode #TechInterview
+#LearningInPublic #Trees #SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #Recursion #CleanCode #TechInterview

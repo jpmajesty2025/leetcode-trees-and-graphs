@@ -1,6 +1,6 @@
-**Mastering Binary Trees: Iterative DFS with Target Subtraction 🌲**
+**Mastering Binary Trees: Iterative Depth First Search (DFS) with Target Subtraction 🌲**
 
-When solving tree problems like **LeetCode 112 (Path Sum)** in production systems, deep or untrusted inputs can easily blow past Python's default recursion stack limit. 
+When solving DFS tree problems in production systems, deep or untrusted inputs can easily blow past Python's default recursion stack limit. 
 
 How do we retain the mathematical elegance of the **target subtraction** approach without risking a `RecursionError`? By moving recursion to an **explicit heap stack**.
 
@@ -50,4 +50,4 @@ By pairing an explicit DFS stack with the top-down subtraction pattern, we get t
 
 Do you prefer explicit stacks over recursion in production code? Let’s hear your thoughts! 👇
 
-#SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #SystemDesign #CleanCode #TechInterview
+#LearningInPublic #SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #Stack #Tree #Graph #DFS #SystemDesign #CleanCode #TechInterview
