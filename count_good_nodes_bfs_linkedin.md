@@ -1,6 +1,9 @@
 **Mastering Binary Trees: Breadth-First Search (BFS) for Good Nodes 🌲**
 
-Most path-property problems are tackled with Depth-First Search. But did you know that **Breadth-First Search (BFS)** can evaluate path-monotonic properties like **LeetCode 1448 (Count Good Nodes in Binary Tree)** just as effectively?
+Problem restatement:
+Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X. Return the number of good nodes in the binary tree.
+
+It is commone to handle path-property problems via Depth-First Search (DFS). But did you know that **Breadth-First Search (BFS)** can evaluate path-monotonic properties, such as this problem, just as effectively?
 
 Here is how layer-by-layer traversal handles branch ancestor maximums.
 
@@ -56,6 +59,6 @@ def good_nodes_bfs(root: Optional[TreeNode]) -> int:
 
 Understanding the memory trade-off between **Tree Height (DFS)** and **Tree Width (BFS)** allows you to select the optimal traversal strategy based on the shape of your data.
 
-When analyzing trees or graph structures, how do you decide between BFS and DFS? Let's discuss below! 👇
+When analyzing trees or graph structures, how do you decide between BFS and DFS? Comment below! 👇
 
-#SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #BFS #BreadthFirstSearch #CleanCode #TechInterview
+#LearningInPublic #SoftwareEngineering #Python #LeetCode #DataStructures #Algorithms #BFS #BreadthFirstSearch #DFS #DepthFirstSearch #CleanCode #TechInterview
