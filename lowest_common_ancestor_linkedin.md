@@ -1,10 +1,13 @@
 **Mastering Binary Trees: Recursion vs. Parent Pointers for Lowest Common Ancestor 🌲**
 
-Finding the Lowest Common Ancestor (LCA) of two nodes (LeetCode 236) is one of the most celebrated tree questions in technical interviews. It tests your mastery of tree traversals, post-order aggregation, and memory trade-offs.
+**Definittion and problem:**
+Given a binary tree, find the lowest common ancestor (LCA) of two given nodes in the tree. 
 
-Two nodes $p$ and $q$ share an LCA defined as the deepest node that has both $p$ and $q$ as descendants (where a node can be a descendant of itself).
+According to Wikipedia (https://en.wikipedia.org/wiki/Lowest_common_ancestor): The lowest common ancestor in a tree T of two nodes p and q is the lowest node in T that has both p and q as descendants (where we allow a node to be a descendant of itself). 
 
-Here is a breakdown of the two primary paradigms to solve it: **Post-Order Recursive DFS** vs. **Iterative Parent-Pointer Tracking**. (Code attached in the image!)
+This is an excellent tree C:\Projects\leetcode-trees-and-graphsquestion in a technical interview. It tests your mastery of traversals, post-order aggregation, and memory trade-offs.
+
+Here is a breakdown of the two primary paradigms to solve LCA: **Post-Order Recursive DFS** vs. **Iterative Parent-Pointer Tracking**.
 
 ---
 
@@ -49,6 +52,6 @@ What if you want to avoid recursion limits or prefer an intuitive bottom-up path
 2. **Type Safety in Python:** When initializing `parent_map: Dict[TreeNode, Optional[TreeNode]] = {root: None}`, explicit type annotations prevent type checkers from inferring `Dict[TreeNode, None]`.
 3. **Defensive API Design:** While problem constraints often guarantee valid inputs, defensively handling `None` roots or missing nodes makes production code resilient.
 
-Which implementation do you prefer writing under interview pressure: the recursive 10-liner or the iterative parent map? Let's discuss in the comments! 👇
+Which implementation do you prefer writing under interview pressure: the recursive 10-liner or the iterative parent map?
 
 #SoftwareEngineering #Python #DataStructures #Algorithms #LeetCode #BinaryTrees #Recursion #CleanCode #TechInterview #LearningInPublic
