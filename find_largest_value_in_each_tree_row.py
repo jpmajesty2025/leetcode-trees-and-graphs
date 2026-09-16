@@ -1,15 +1,13 @@
 '''
-Given the root of a binary tree, imagine yourself standing on the right side of it, 
-return the values of the nodes you can see ordered from top to bottom.
+Given the root of a binary tree, return an array of the largest value in each row of the tree (0-indexed).
 '''
 
 from collections import deque
 from typing import Optional
 from tree_node import TreeNode
 
-
-def right_side_view(root: Optional[TreeNode]) -> list[int]:
-    """Return the right-side view of a binary tree using iterative BFS."""
+def largest_values(root: Optional[TreeNode]) -> list[int]:
+    """Return the largest value in each row of a binary tree using iterative BFS."""
     if not root:
         return []
 
@@ -18,13 +16,17 @@ def right_side_view(root: Optional[TreeNode]) -> list[int]:
 
     while queue:
         level_size = len(queue)
-        result.append(queue[-1].val)  # Rightmost element in current level
+        max_value = float('-inf')
 
         for _ in range(level_size):
             node = queue.popleft()
+            max_value = max(max_value, node.val)
+
             if node.left:
                 queue.append(node.left)
             if node.right:
                 queue.append(node.right)
+
+        result.append(max_value)
 
     return result
