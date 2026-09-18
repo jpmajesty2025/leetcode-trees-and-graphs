@@ -1,10 +1,10 @@
 **Why BFS Outperforms DFS for Minimum Depth of Binary Tree 🌲**
 
-Finding the *maximum* depth of a binary tree is straightforward: explore all paths and take the maximum. But finding the **minimum depth** (LeetCode 111) introduces a classic algorithm design pitfall: **a leaf node must have NO children**.
+Finding the *maximum* depth of a binary tree is straightforward: explore all paths and take the maximum. But finding the **minimum depth** introduces a classic algorithm design pitfall: **a leaf node must have NO children**.
 
 If a node has only one child, you cannot simply take `min(left, right) + 1`—because the empty child path is `0`, which would falsely declare the current parent node a leaf!
 
-Here is a breakdown of the three key approaches, why BFS is the clear architectural winner, and key engineering takeaways. (Code attached in the image!)
+Here is a breakdown of the three key approaches, why BFS is the clear architectural winner, and key engineering takeaways. 
 
 ---
 
@@ -52,8 +52,8 @@ If call-stack depth is a concern but you want depth-first memory bounds:
 
 1. **Shortest-Path Rule of Thumb:** Whenever an algorithm asks for the *shortest* path or *nearest* target in a tree/graph, reach for **BFS first**. It guarantees the earliest possible termination.
 2. **Beware the "Hidden" Single-Child Trap:** Tree nodes with a single child are not leaves. Blindly applying `min()` without validating child existence is one of the most common recursion bugs in technical interviews.
-3. **Fail Fast:** In systems engineering, prefer algorithms that can short-circuit early over those that must process full data trees unconditionally.
+3. **Fail/Terminate Fast:** In systems engineering, prefer algorithms that can short-circuit early over those that must process full data trees unconditionally.
 
-Do you instinctively reach for DFS or BFS when you see tree problems? Let’s connect and discuss in the comments below! 👇
+Do you instinctively reach for DFS or BFS when you see tree problems?
 
 #SoftwareEngineering #Python #DataStructures #Algorithms #LeetCode #BinaryTrees #BFS #Recursion #CleanCode #TechInterview #LearningInPublic
