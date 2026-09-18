@@ -1,8 +1,14 @@
-# Cracking LeetCode 1026: Maximum Difference Between Node and Ancestor (3 Ways) 🌲
+# Finding the Maximum Difference Between Node and Ancestor in a Tree (3 Ways) 🌲
+
+**Problem:**
+Given the root of a binary tree, find the maximum value v for which there exist different nodes a and b where 
+v = |a.val - b.val| and a is an ancestor of b.
+
+A node a is an ancestor of b if either: any child of a is equal to b or any child of a is an ancestor of b.
 
 When solving binary tree problems, the intuitive first approach often involves passing information up from subtrees or checking ancestor pairs. But what happens when you flip the mental model from **bottom-up aggregation** to **top-down state tracking**?
 
-Let's dive into **LeetCode 1026: Maximum Difference Between Node and Ancestor**.
+Let's dive in and find out!.
 
 ---
 
@@ -56,7 +62,7 @@ def max_ancestor_diff(root: Optional[TreeNode]) -> int:
 
 ### 2️⃣ Approach 2: Explicit Iterative DFS (Production-Safe & Recursion-Proof)
 
-In languages like Python with default recursion limits (e.g. 1000 frames), deep skewed trees can trigger `RecursionError`. We can eliminate call stack overhead using an explicit heap-allocated stack storing `(node, cur_min, cur_max)`.
+As we have seen before, in languages like Python with default recursion limits (e.g. 1000 frames), deep skewed trees can trigger `RecursionError`. Our go to solution: eliminate call stack overhead with an explicit heap-allocated stack storing `(node, cur_min, cur_max)`.
 
 ```python
 from typing import Optional
@@ -142,13 +148,6 @@ def max_ancestor_diff_bfs(root: Optional[TreeNode]) -> int:
 | **Iterative DFS** | $\mathcal{O}(N)$ | $\mathcal{O}(H)$ heap memory | Skewed trees, systems with strict stack limits |
 | **Iterative BFS** | $\mathcal{O}(N)$ | $\mathcal{O}(W)$ queue memory | Shallow wide trees, streaming / level processing |
 
----
+What's your go-to strategy when handling binary tree path problems—top-down state propagation or bottom-up aggregation?
 
-### 🧪 Verification with Property-Based Testing
-Beyond deterministic unit tests, we verified all 3 implementations against a brute-force $\mathcal{O}(N^2)$ oracle using **Hypothesis** across randomized trees with negative, zero, and boundary values. Zero discrepancies across 100+ generated test topologies!
-
----
-
-What's your go-to strategy when handling binary tree path problems—top-down state propagation or bottom-up aggregation? Let's discuss in the comments! 👇
-
-#Python #Algorithms #DataStructures #LeetCode #SoftwareEngineering #CodingInterview #CleanCode
+#LearningInPublic #Python #Algorithms #DataStructures #LeetCode #SoftwareEngineering #CodingInterview #CleanCode
