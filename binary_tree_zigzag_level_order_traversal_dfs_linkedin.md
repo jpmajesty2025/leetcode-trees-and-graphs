@@ -1,0 +1,53 @@
+# Mastering Binary Trees (Part 2): Depth-Indexed Zigzag Traversal with DFS 🌲🔄
+
+In **Part 1**, we explored the classic Breadth-First Search (BFS) approach for zigzag level-order traversal.
+
+While BFS is the intuitive choice for horizontal tier problems, what happens when memory is a constraint on massive, balanced trees where the bottom tier holds up to 50% of all nodes ($\approx N/2$)?
+
+Let's dive into how we can solve **LeetCode 103: Binary Tree Zigzag Level Order Traversal** using **Depth-First Search (DFS)** — comparing **Recursive DFS** with **Iterative Stack DFS**.
+
+---
+
+### 💡 The DFS Insight: Depth-Indexed Buckets
+
+Instead of visiting nodes level-by-level, DFS dives deep along a branch. We can still construct horizontal zigzag rows by passing the current `depth` to our traversal:
+
+1. **Dynamic Level Allocation**: When visiting a node at `depth == len(result)`, create a new double-ended queue (`deque`) for that tier.
+2. **Directional Placement with $\mathcal{O}(1)$ Insertion**:
+   - **Even Depths (0, 2, 4...)**: Append to the right $\to$ `result[depth].append(node.val)`
+   - **Odd Depths (1, 3, 5...)**: Append to the left $\to$ `result[depth].appendleft(node.val)`
+3. **Preserving Left-to-Right Precedence**: Always traverse `node.left` before `node.right`.
+
+By utilizing `deque.appendleft()`, we avoid the $\mathcal{O}(k)$ array shifting cost of `list.insert(0, val)`.
+
+---
+
+### 🛡️ Recursive vs. Iterative DFS (Stack Safety)
+
+- **Recursive DFS**: Clean, declarative, and concise. It relies on Python's call stack, taking $\mathcal{O}(H)$ memory ($H = \text{tree height}$).
+- **Iterative DFS**: For deep or skewed trees where $H > 1,000$, recursive calls risk a `RecursionError`. By managing an explicit stack of `(node, depth)` tuples on the heap and pushing right-child before left-child, we achieve identical traversal order with complete stack-overflow immunity.
+
+*(See attached ray.so images for both Recursive and Iterative Python implementations! 📸)*
+
+---
+
+### ⚖️ BFS vs. DFS Architectural Comparison
+
+| Metric | Level-Order BFS | Recursive DFS | Iterative DFS (Stack) |
+| :--- | :--- | :--- | :--- |
+| **Time Complexity** | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ | $\mathcal{O}(N)$ |
+| **Auxiliary Space (Balanced Tree)** | $\mathcal{O}(N)$ queue ($\approx N/2$ nodes) | $\mathcal{O}(\log N)$ call stack | $\mathcal{O}(\log N)$ heap stack |
+| **Auxiliary Space (Skewed Tree)** | $\mathcal{O}(1)$ queue | $\mathcal{O}(N)$ call stack | $\mathcal{O}(N)$ heap stack |
+| **State Finalization** | Finalized per tier | Finalized at end of traversal | Finalized at end of traversal |
+| **Stack Overflow Risk** | None | Possible on deep trees ($H > 1000$) | None |
+
+---
+
+### 🧪 Verification with Property-Based Testing
+Using **Hypothesis**, all three implementations (BFS, Recursive DFS, and Iterative DFS) were verified against an independent oracle across arbitrary random trees, asymmetric topologies, negative numbers, and edge cases with 100% agreement.
+
+---
+
+When building tree pipelines in production, do you prefer BFS for natural level boundaries or DFS for $\mathcal{O}(\log N)$ memory efficiency on balanced trees?
+
+#LearningInPublic #Python #DataStructures #Algorithms #LeetCode #SoftwareEngineering #CleanCode #DFS #TreeTraversal #SystemDesign
