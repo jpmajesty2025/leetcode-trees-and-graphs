@@ -1,77 +1,53 @@
-# The Art of BST Insertion: From Recursive Elegance to $\mathcal{O}(1)$ Auxiliary Space 🌲⚡
+# The Art of BST Insertion: From Recursion to $\mathcal{O}(1)$ Auxiliary Space 🌲⚡
 
-When inserting a new key into a Binary Search Tree (BST), what is the cleanest and most resilient way to do it?
+When inserting a new key into a Binary Search Tree (BST), what is the cleanest approach?
 
-Because a BST maintains the strict invariant:
+Because a BST maintains the invariant:
 $$\text{left\_subtree} < \text{node.val} < \text{right\_subtree}$$
 
-Inserting a new value that doesn't already exist in the tree **never requires restructuring or rotating the existing tree**—it always naturally attaches as a new **leaf node**!
+Inserting a key that does not already exist **never requires tree rotations**—it always naturally attaches as a new **leaf node**!
 
-Let's dissect **LeetCode 701: Insert into a Binary Search Tree** and compare **Recursive Insertion** with an **$\mathcal{O}(1)$ Auxiliary Space Iterative Pointer Walk**.
-
----
-
-### 💡 The Core Insight: Finding the Null Leaf Insertion Slot
-
-Inserting into a BST follows standard binary search logic:
-1. Compare `val` with `curr.val`.
-2. If `val < curr.val`, move to the left subtree.
-3. If `val > curr.val`, move to the right subtree.
-4. As soon as the target child is `None`, allocate `TreeNode(val)` and attach it directly to that pointer!
-
-This guarantees that the new node is positioned correctly relative to **every ancestor** along the search path in $\mathcal{O}(H)$ time (where $H$ is tree height).
+Let's compare two solutions: **Recursive Insertion** with an **$\mathcal{O}(1)$ Extra Space Iterative Pointer Walk**.
 
 ---
 
-### 1️⃣ Solution 1: Recursive Insertion (Declarative & Expressive)
+### 💡 The Core Insight: Finding the Leaf Slot
 
-Recursive insertion uses divide-and-conquer:
-- If `root` is `None`, return `TreeNode(val)`.
-- Reassign `root.left = insert_into_bst(root.left, val)` or `root.right = insert_into_bst(root.right, val)`.
-- Return `root` as the recursive call stack unwinds.
+BST insertion mirrors binary search:
+1. If `val < curr.val`, branch left.
+2. If `val > curr.val`, branch right.
+3. As soon as the target child is `None`, allocate `TreeNode(val)` and attach it directly!
 
-- **Time Complexity:** $\mathcal{O}(H)$ ($\mathcal{O}(\log N)$ on balanced trees, $\mathcal{O}(N)$ on degenerate skewed trees).
-- **Auxiliary Space:** $\mathcal{O}(H)$ call stack space.
-
-*(See attached ray.so image for the clean Python implementation! 📸)*
+This correctly positions the new node relative to **all ancestors** along the search path in $\mathcal{O}(H)$ time ($H = \text{height}$).
 
 ---
 
-### 2️⃣ Solution 2: Iterative Pointer Walk ($\mathcal{O}(1)$ Extra Space & Stack-Safe)
+### 🚀 Two Implementations
 
-In production services handling deep or skewed trees ($H > 1,000$ levels), recursion introduces call-stack overhead and risks triggering `RecursionError`.
+1️⃣ **Recursive Insertion (Declarative & Expressive)**
+- If `root is None`, returns `TreeNode(val)`.
+- Reassigns `root.left` or `root.right` as the call stack unwinds.
+- **Complexity:** $\mathcal{O}(H)$ time, $\mathcal{O}(H)$ call-stack space ($\mathcal{O}(\log N)$ balanced).
 
-We can optimize auxiliary memory down to **$\mathcal{O}(1)$** using a simple two-pointer walk:
-- Track `curr = root`.
-- Look ahead at `curr.left` or `curr.right`.
-- As soon as the target branch is empty, attach `TreeNode(val)` and immediately return `root`.
-- **Zero recursive calls, zero stack allocations.**
-
-*(See attached ray.so image for the iterative Python implementation! 📸)*
+2️⃣ **Iterative Pointer Walk ($\mathcal{O}(1)$ Auxiliary Space & Stack-Safe)**
+- Traverses with a single pointer `curr = root`.
+- Attaches `TreeNode(val)` directly to the empty child slot.
+- Eliminates `RecursionError` risk on deep skewed trees ($H > 1,000$).
+- **Complexity:** $\mathcal{O}(H)$ time, **$\mathcal{O}(1)$** auxiliary space.
 
 ---
 
-### ⚖️ Architectural Trade-off Summary
+### ⚖️ Trade-off Summary
 
 | Metric | Recursive Insertion | Iterative Pointer Walk |
 | :--- | :--- | :--- |
-| **Time Complexity** | $\mathcal{O}(H)$ ($\mathcal{O}(\log N)$ balanced) | $\mathcal{O}(H)$ ($\mathcal{O}(\log N)$ balanced) |
-| **Auxiliary Memory** | $\mathcal{O}(H)$ call stack frames | **$\mathcal{O}(1)$** (constant auxiliary space) |
-| **Tree Modification** | In-place leaf attachment | In-place leaf attachment |
-| **Stack Overflow Risk** | Possible on deep skewed trees ($H > 1,000$) | **None (100% Stack-Safe)** |
-| **Code Style** | Functional / Declarative | Imperative / Pointer-based |
+| **Time** | $\mathcal{O}(H)$ ($\mathcal{O}(\log N)$ balanced) | $\mathcal{O}(H)$ ($\mathcal{O}(\log N)$ balanced) |
+| **Auxiliary Memory** | $\mathcal{O}(H)$ call stack | **$\mathcal{O}(1)$** (constant space) |
+| **Modification** | In-place leaf attach | In-place leaf attach |
+| **Stack Safety** | Call stack risk if deep | **None (100% Stack-Safe)** |
 
 ---
 
-### 🧪 Property-Based Verification with Hypothesis
-Both implementations were validated using **Hypothesis** property-based testing against an independent strict in-order monotonicity oracle across:
-- Randomly generated balanced and unbalanced BST topologies
-- Extreme insertion values at 32-bit limits ($[-2^{31}, 2^{31}-1]$)
-- Exact value set preservation: $\text{values}(\text{tree}_{\text{new}}) == \text{values}(\text{tree}_{\text{old}}) \cup \{val\}$
-- Exact tree size verification: $|\text{tree}_{\text{new}}| == |\text{tree}_{\text{old}}| + 1$
+Do you lean towards declarative recursive methods or constant-space iterative pointer walks? Let's discuss below! 👇
 
----
-
-When building database indexes or tree-based memory structures, do you lean towards declarative recursive methods or constant-space iterative walks? Let's discuss below! 👇
-
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #BinarySearchTree #SystemDesign #Testing
+#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #BinarySearchTree #SystemDesign
