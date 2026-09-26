@@ -30,7 +30,3 @@ def closest_value_recursive(root: Optional[TreeNode], target: float) -> int:
             return node.val
 
     return helper(root, root.val)
-
-
-closest_value = closest_value_recursive
-closestValue = closest_value_recursive

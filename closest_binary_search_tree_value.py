@@ -35,6 +35,3 @@ def closest_value(root: Optional[TreeNode], target: float) -> int:
             return current.val
 
     return closest
-
-
-closestValue = closest_value

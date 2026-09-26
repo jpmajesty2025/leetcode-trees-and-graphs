@@ -10,7 +10,6 @@ after insertion. You can return any of them.
 from typing import Optional
 from tree_node import TreeNode
 
-
 def insert_into_bst(root: Optional[TreeNode], val: int) -> Optional[TreeNode]:
     """Insert a value into a Binary Search Tree (BST) and return the root of the modified tree."""
     if not root:
