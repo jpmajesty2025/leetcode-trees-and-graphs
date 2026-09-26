@@ -1,8 +1,6 @@
-# Mastering Binary Trees (Part 1): Level-by-Level Zigzag Traversal with BFS 🌲⚡
+# Mastering Binary Trees: Level-by-Level Zigzag Traversal with BFS  (Part 1 of 2) 🌲⚡
 
-When traversing a tree where data flows in alternating directions across horizontal rows (left-to-right on tier 0, right-to-left on tier 1, and so on), Breadth-First Search (BFS) is often the most intuitive starting point.
-
-Let’s unpack **LeetCode 103: Binary Tree Zigzag Level Order Traversal** and see how level-order traversal handles alternating state transitions cleanly.
+When traversing a tree where data flows in alternating directions across horizontal rows (left-to-right on tier 0, right-to-left on tier 1, and so on), Breadth-First Search (BFS) is an intuitive starting point. Let's dive in!
 
 ---
 
@@ -18,11 +16,9 @@ Because the problem defines output by horizontal tiers, **Breadth-First Search (
 
 ### ⚙️ How the BFS Architecture Works
 
-1. **Queue-Based Level Batching**: Using a standard `collections.deque`, capture the size of the current tier (`len(queue)`).
+1. **Queue-Based Level Batching**: Using a standard `deque`, capture the size of the current tier (`len(queue)`).
 2. **Direction Flag**: Maintain a boolean `left_to_right = True` that flips at the end of every processed tier.
 3. **In-Place Row Inversion**: Collect nodes left-to-right as they are dequeued, and conditionally reverse the tier list if `not left_to_right` before appending to the final result.
-
-*(See attached ray.so image for the complete, clean Python implementation! 📸)*
 
 ---
 
@@ -45,6 +41,6 @@ Because the problem defines output by horizontal tiers, **Breadth-First Search (
 
 👉 **In Part 2**, we’ll explore how to solve this exact problem **Depth-First (DFS)** using depth indexing and double-ended queues — and why DFS might be your best bet for memory optimization on wide, balanced trees!
 
-Do you prefer handling alternating direction via row reversal or directional deque insertions? Let's discuss in the comments! 👇
+Do you prefer handling alternating direction via row reversal or directional deque insertions?
 
 #LearningInPublic #Python #DataStructures #Algorithms #LeetCode #SoftwareEngineering #CleanCode #BFS #TreeTraversal

@@ -18,7 +18,7 @@ Unlike BFS, DFS traverses branches vertically. To find the sum of only the *deep
 When visiting any node at `depth` we face three possibilities:
 1. **New Deepest Level Found (`depth > max_depth`)**: We've reached a deeper layer than anything seen before! Reset  `max_depth = depth` and reset `total = node.val`.
 2. **Same Deepest Level (`depth == max_depth`)**: Another leaf at our current record depth $\to$ accumulate `total += node.val`.
-3. **Shallower Level (`depth < max_depth`)**: Ignore since this cannot contribute to the max-depth sum we're after.
+3. **Shallower Level (`depth < max_depth`)**: Ignore since this it cannot contribute to the max-depth sum we're after.
 
 ---
 

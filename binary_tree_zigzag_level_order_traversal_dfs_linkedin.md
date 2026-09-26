@@ -1,16 +1,14 @@
-# Mastering Binary Trees (Part 2): Depth-Indexed Zigzag Traversal with DFS 🌲🔄
+# Mastering Binary Trees: Depth-Indexed Zigzag Traversal with DFS (Part 2 of 2)🌲🔄
 
-In **Part 1**, we explored the classic Breadth-First Search (BFS) approach for zigzag level-order traversal.
+In **Part 1**, we explored the intuitive Breadth-First Search (BFS) approach for zigzag level-order traversal. But what happens when memory is a constraint on massive, balanced trees where the bottom tier holds up to 50% of all nodes ($\approx N/2$)?
 
-While BFS is the intuitive choice for horizontal tier problems, what happens when memory is a constraint on massive, balanced trees where the bottom tier holds up to 50% of all nodes ($\approx N/2$)?
-
-Let's dive into how we can solve **LeetCode 103: Binary Tree Zigzag Level Order Traversal** using **Depth-First Search (DFS)** — comparing **Recursive DFS** with **Iterative Stack DFS**.
+**Depth-First Search (DFS)** to the rescue!
 
 ---
 
 ### 💡 The DFS Insight: Depth-Indexed Buckets
 
-Instead of visiting nodes level-by-level, DFS dives deep along a branch. We can still construct horizontal zigzag rows by passing the current `depth` to our traversal:
+DFS dives deep along a branch but we can still construct horizontal zigzag rows by passing the current `depth` to our traversal:
 
 1. **Dynamic Level Allocation**: When visiting a node at `depth == len(result)`, create a new double-ended queue (`deque`) for that tier.
 2. **Directional Placement with $\mathcal{O}(1)$ Insertion**:
@@ -27,8 +25,6 @@ By utilizing `deque.appendleft()`, we avoid the $\mathcal{O}(k)$ array shifting 
 - **Recursive DFS**: Clean, declarative, and concise. It relies on Python's call stack, taking $\mathcal{O}(H)$ memory ($H = \text{tree height}$).
 - **Iterative DFS**: For deep or skewed trees where $H > 1,000$, recursive calls risk a `RecursionError`. By managing an explicit stack of `(node, depth)` tuples on the heap and pushing right-child before left-child, we achieve identical traversal order with complete stack-overflow immunity.
 
-*(See attached ray.so images for both Recursive and Iterative Python implementations! 📸)*
-
 ---
 
 ### ⚖️ BFS vs. DFS Architectural Comparison
@@ -40,11 +36,6 @@ By utilizing `deque.appendleft()`, we avoid the $\mathcal{O}(k)$ array shifting 
 | **Auxiliary Space (Skewed Tree)** | $\mathcal{O}(1)$ queue | $\mathcal{O}(N)$ call stack | $\mathcal{O}(N)$ heap stack |
 | **State Finalization** | Finalized per tier | Finalized at end of traversal | Finalized at end of traversal |
 | **Stack Overflow Risk** | None | Possible on deep trees ($H > 1000$) | None |
-
----
-
-### 🧪 Verification with Property-Based Testing
-Using **Hypothesis**, all three implementations (BFS, Recursive DFS, and Iterative DFS) were verified against an independent oracle across arbitrary random trees, asymmetric topologies, negative numbers, and edge cases with 100% agreement.
 
 ---
 
