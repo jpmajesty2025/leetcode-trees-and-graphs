@@ -1,10 +1,12 @@
 # The Hidden Tie-Breaking Trap in BST Search Queries 🌲🎯
 
-When searching a Binary Search Tree (BST) for the node value closest to a floating-point target, binary search finds the answer in $\mathcal{O}(H)$ time.
+**The Problem**:
+Given the root of a binary search tree and a target value, return the value in the BST 
+that is closest to the target. If there are multiple answers, return the smallest.
 
-However, a subtle edge case silently breaks many first-draft solutions: **Equidistant Tie-Breaking**.
+Note that binary search finds the answer in $\mathcal{O}(H)$ time.
 
-Let's dissect **LeetCode 270: Closest BST Value** and why simple distance comparison falls short.
+However, there is subtle edge case that might silently breaks your solutions: **Equidistant Tie-Breaking**. Let's see why simple distance comparison falls short.
 
 ---
 
@@ -53,8 +55,6 @@ if curr_diff < closest_diff or (curr_diff == closest_diff and curr.val < closest
 - Passes running closest value down the call stack.
 - **Complexity:** $\mathcal{O}(H)$ time, $\mathcal{O}(H)$ call-stack space.
 
-*(See attached ray.so image for side-by-side Python code! 📸)*
-
 ---
 
 ### ⚖️ Trade-off Summary
@@ -68,11 +68,6 @@ if curr_diff < closest_diff or (curr_diff == closest_diff and curr.val < closest
 
 ---
 
-### 🧪 Property-Based Verification with Hypothesis
-Both implementations were verified with **Hypothesis** against an independent brute-force oracle (`key=lambda v: (abs(v - target), v)`) across randomized BST topologies, negative values, fractional targets, and equidistant edge cases.
-
----
-
 How do you handle secondary sorting keys and tie-breaking in search indexes? Let's discuss below! 👇
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #BinarySearchTree #SystemDesign
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #BinarySearchTree #SystemDesign
