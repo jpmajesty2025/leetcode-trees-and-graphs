@@ -1,6 +1,6 @@
 # Graph Pathfinding at Scale: Avoiding the Duplicate Stack Ingestion Trap 🌐⚡
 
-When checking if a path exists between two nodes in an undirected graph (LeetCode 1971: $N \le 200,000$, $|E| \le 200,000$), what data structures and traversal guards do you reach for?
+When checking if a path exists between two nodes in an undirected graph, what data structures and traversal guards do you reach for?
 
 A common implementation pattern looks like this:
 ```python
@@ -14,7 +14,7 @@ while stack:
 
 ---
 
-### 🚨 Why This Causes Performance & Memory Degradation
+### 🚨 This Causes Performance & Memory Degradation:
 
 1️⃣ **Redundant Stack Bloat**: In dense or star topologies, nodes can be pushed to the stack dozens or hundreds of times before being popped. Peak stack memory degrades to $\mathcal{O}(E)$ instead of $\mathcal{O}(V)$.
 2️⃣ **Hashing Overhead**: Constructing `graph = {i: [] for i in range(n)}` and `visited = set()` on $200,000$ integer keys triggers heavy dynamic memory allocations and hash table lookups.
@@ -43,10 +43,8 @@ while stack:
 
 ---
 
-Check out the clean implementations in the attached snippet! 📸
-
 In Part 2 tomorrow, we’ll look at how **Disjoint Set Union (Union-Find)** eliminates adjacency list allocation entirely to solve path queries in $\mathcal{O}(V)$ auxiliary memory.
 
 Do you prefer DFS or BFS when finding paths in large graphs? Let's discuss below! 👇
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #ComputerScience
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #Graphs #DFS #LeetCode #CleanCode #ComputerScience
