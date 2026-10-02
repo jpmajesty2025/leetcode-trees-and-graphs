@@ -1,4 +1,4 @@
-# 2D Grids to 1D Disjoint Sets: Solving Number of Islands with Union-Find 🏝️🔗
+# From 2D Grids to 1D Disjoint Sets: Solving Number of Islands with Union-Find 🏝️🔗
 
 In Part 1, we tackled stack safety and memory optimization with DFS and BFS. But what if the landscape isn't static?
 
@@ -17,7 +17,7 @@ To map a 2D matrix cell $(r, c)$ into a 1D Disjoint Set array of size $M \times 
 $$\text{index} = r \times \text{cols} + c$$
 
 2️⃣ **Deduplicated Neighbor Unions**:
-Because connectivity is undirected, iterating over all 4 directions performs duplicate `union()` operations. You only need to merge with **Right** $(r, c+1)$ and **Down** $(r+1, c)$ neighbors!
+Because connectivity is undirected, iterating over all 4 directions performs duplicate `union()` operations. You only need to merge with **Right** $(r, c+1)$ and **Down** $(r+1, c)$ neighbors! For instance, when $r = 0$, the algorithm will inspect the cell below, row 1, to see if it is a neignboring bit of land in need of a merge. In a later iteration, when $r = 1$, there is no need to look above to row 0, to check if the cell above is a land neighbor - this would be duplicate work! So we need only work our way down and to the right, starting from the upper left grid corner.
 
 3️⃣ **Component Tracking in $\mathcal{O}(1)$**:
 • Initialize `count` to the total number of `'1'` cells.
@@ -43,8 +43,6 @@ where $\alpha$ is the Inverse Ackermann function ($\le 4$ for all realistic inpu
 
 ---
 
-Check out the modular, production-grade 2D Union-Find implementation in the attached image! 📸
-
 Have you used coordinate flattening for grid-based graph algorithms before? Drop your thoughts below! 👇
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #SystemDesign #CodingInterview
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #UnionFind #LeetCode #SystemDesign #CodingInterview

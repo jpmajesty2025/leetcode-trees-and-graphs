@@ -1,6 +1,6 @@
 # Number of Islands: The Hidden Recursion Trap in 2D Grid Traversal 🏝️⚡
 
-When asked to count connected components on a 2D grid (LeetCode 200: "Number of Islands"), most engineers reach for recursive DFS:
+To count connected components on a 2D grid, do you reach for recursive DFS?
 
 ```python
 def dfs(r, c):
@@ -9,16 +9,15 @@ def dfs(r, c):
         # recurse into neighbors...
 ```
 
-It is concise and readable. But what happens in production when your grid isn't a small toy example?
+It's alluring, right? Concise and readable. But what happens in production when your grid isn't a small toy example?
 
 ---
 
 ### 🚨 The Hidden Bug: `RecursionError`
 
-Python's default recursion limit is `1,000`.
+Python's default recursion limit is `1,000`. Like many popular modern languages, it is not designed for recursion.
 
-If you have a $300 \times 300$ grid ($90,000$ cells) containing a single serpentine, spiral, or large solid island, recursive DFS will exceed the call-stack limit and crash:
-`RecursionError: maximum recursion depth exceeded`
+If you have a $300 \times 300$ grid ($90,000$ cells) containing a single serpentine, spiral, or large solid island, recursive DFS will exceed the call-stack limit and crash.
 
 You *could* increase `sys.setrecursionlimit()`, but in production systems, relying on OS call-stack expansion risks segmentation faults.
 
@@ -27,7 +26,7 @@ You *could* increase `sys.setrecursionlimit()`, but in production systems, relyi
 ### 💡 Two Stack-Safe Alternatives:
 
 1️⃣ **Iterative BFS (Optimal Peak Memory)**
-• Uses a heap-allocated `collections.deque`.
+• Uses a heap-allocated `deque`.
 • Marks cells as visited **immediately upon enqueueing** (preventing duplicate queue entries).
 • **Peak Auxiliary Space:** Bounded by the perimeter of the wavefront — $\mathcal{O}(\min(M, N))$ on average, far better than DFS's $\mathcal{O}(M \times N)$ worst-case stack.
 
@@ -47,10 +46,8 @@ You *could* increase `sys.setrecursionlimit()`, but in production systems, relyi
 
 ---
 
-Check out the clean implementations in the attached snippet! 📸
-
 In Part 2 tomorrow, we’ll explore how to model 2D grids with **Disjoint Set Union (Union-Find)** for dynamic, streaming land additions.
 
-Do you default to BFS or DFS when exploring matrices? Let's discuss in the comments! 👇
+Do you default to BFS or DFS when exploring matrices?
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #ComputerScience
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #Graphs #DFS #BFS #LeetCode #CleanCode #ComputerScience
