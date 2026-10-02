@@ -5,10 +5,14 @@ from typing import Optional, List
 from tree_node import TreeNode
 from minimum_absolute_difference_in_bst import get_minimum_difference
 from minimum_absolute_difference_in_bst_iterative import get_minimum_difference_iterative
+from min_abs_difference_in_bst_morris import get_minimum_difference_morris
+from min_abs_difference_in_bst import get_minimum_difference as get_min_diff_alias
 
 SOLUTIONS = [
     get_minimum_difference,
     get_minimum_difference_iterative,
+    get_minimum_difference_morris,
+    get_min_diff_alias,
 ]
 
 
