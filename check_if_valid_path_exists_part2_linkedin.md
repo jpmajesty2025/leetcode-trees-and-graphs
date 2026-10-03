@@ -1,29 +1,31 @@
 # Pathfinding Without Graph Construction: The Power of Union-Find 🌲🔗
 
-In Part 1, we optimized DFS & BFS traversal to avoid redundant stack allocations. But consider this architectural question:
+In this graph reachability problem, we are given $n$ vertices and an edge list, and must decide if a valid path connects `source` and `destination`.
 
-*If you only need to determine whether `source` and `destination` are in the same connected component, do you actually need to build an adjacency list?*
+In Part 1, we optimized BFS and DFS traversals. But consider this architectural question:
 
-Building an adjacency list requires $\mathcal{O}(V + E)$ auxiliary space and $2 \times |E|$ list insertions before traversal even begins.
+*If you only need to determine whether `source` and `destination` belong to the same connected component, do you actually need to build an adjacency list?*
 
-**Disjoint Set Union (DSU / Union-Find)** skips graph construction entirely.
+Building an adjacency list allocates $\mathcal{O}(V + E)$ auxiliary memory and performs $2 \times |E|$ list insertions before traversal even begins.
+
+**Disjoint Set Union (DSU / Union-Find)** skips graph construction entirely!
 
 ---
 
-### 💡 How Union-Find Solves Path Existence On-the-Fly
+### 💡 How Union-Find Solves Reachability On-the-Fly
 
 Instead of building a graph:
 1. Initialize a `parent` array of size $N$ ($\mathcal{O}(V)$ memory).
-2. Stream through raw `edges` and merge endpoints with `union(u, v)`.
-3. **Early Exit**: After each `union()`, check if `find(source) == find(destination)`. If they share a root, return `True` immediately without processing the remaining edges!
+2. Stream raw `edges` directly, merging endpoints with `union(u, v)`.
+3. **Early Exit**: After each `union()`, check `find(source) == find(destination)`. If they share a root, return `True` immediately without processing remaining edges!
 
 ---
 
 ### ⚡ Near-Constant Amortized Operations
 
-With **Path Compression** (flattening trees during `find`) and **Union by Rank** (attaching smaller trees under deeper roots), processing $E$ edges across $V$ vertices runs in:
+With **Path Compression** and **Union by Rank**, processing $E$ edges runs in:
 $$\mathcal{O}(E \cdot \alpha(V))$$
-where $\alpha$ is the Inverse Ackermann function ($\alpha(V) \le 4$ for all $V \le 10^{80}$).
+where $\alpha$ is the Inverse Ackermann function ($\alpha(V) \le 4$ for all practical inputs).
 
 ---
 
@@ -33,7 +35,7 @@ where $\alpha$ is the Inverse Ackermann function ($\alpha(V) \le 4$ for all $V \
 | :--- | :--- | :--- |
 | **Adjacency Allocation** | Required ($\mathcal{O}(V + E)$ space) | **Zero (Processes raw edges directly)** |
 | **Auxiliary Memory** | $\mathcal{O}(V + E)$ | **$\mathcal{O}(V)$ (Parent + rank only)** |
-| **Path Retrieval** | Can reconstruct exact shortest path | Only answers connectivity (True/False) |
+| **Path Retrieval** | Can reconstruct shortest path | Only answers connectivity (True/False) |
 | **Edge Streaming** | Re-run traversal $\mathcal{O}(V + E)$ | Incremental $\mathcal{O}(\alpha(V))$ per edge |
 
 ---
@@ -41,10 +43,8 @@ where $\alpha$ is the Inverse Ackermann function ($\alpha(V) \le 4$ for all $V \
 ### 🎯 The Engineering Takeaway
 
 • Need the **exact path** or **shortest distance**? 👉 Use **BFS / Dijkstra**.
-• Only need **connectivity / cycle detection** or dealing with **streaming edges**? 👉 Use **Union-Find**.
+• Only need **connectivity** or dealing with **streaming edges**? 👉 Use **Union-Find**.
 
-Check out the clean, modular Union-Find implementation in the attached image! 📸
+Do you use Union-Find in production systems for clustering or network connectivity? Let's discuss below! 👇
 
-Do you use Union-Find in production systems for partition or network clustering? Let's discuss in the comments! 👇
-
-#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #UnionFind #LeetCode #SystemDesign #CodingInterview
+#Python #SoftwareEngineering #DataStructures #Algorithms #UnionFind #LeetCode #SystemDesign
