@@ -55,10 +55,8 @@ When Q climbs to 100,000 queries on a system of 1,000 equations, executing 100,0
 
 ---
 
-Check out the Graph DFS implementation in the attached snippet! 📸
-
 In Part 2 tomorrow, we’ll explore how **Weighted Union-Find slashes query time from O(N) down to instant O(1) amortized response!**
 
 How do you model variable dependencies and constraint systems in your services? Let's discuss below! 👇
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #SystemDesign #ComputerScience
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #SystemDesign #ComputerScience
