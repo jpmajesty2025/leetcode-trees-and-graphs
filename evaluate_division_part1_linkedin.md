@@ -1,6 +1,6 @@
 # Evaluate Division: Algebraic Equations as Directed Multiplicative Graphs ➗🌲
 
-In LeetCode 399 ("Evaluate Division"), we are given a system of fraction equations:
+Given a system of fraction equations such as:
 A / B = 2.0,  B / C = 3.0
 
 We need to answer queries like A / C = ? or x / y = ?.
