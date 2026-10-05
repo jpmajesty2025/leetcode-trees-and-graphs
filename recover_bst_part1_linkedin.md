@@ -1,6 +1,6 @@
 # Recovering a Swapped BST: The In-Order Inversion Theorem 🌲🔍
 
-I tell that two nodes in a binary search tree have been accidentally swapped and ask you to restore the tree in-place without changing its structure. How do you identify which two nodes were swapped during a single pass?
+I tell you that two nodes in a binary search tree have been accidentally swapped and ask you to restore the tree in-place without changing its structure. How do you identify which two nodes were swapped during a single pass?
 
 ---
 
@@ -65,4 +65,4 @@ In Part 2 tomorrow, we’ll explore how **Morris Traversal achieves TRUE O(1) au
 
 How do you approach anomaly detection in sorted streams and search trees? Let's discuss below! 👇
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #ComputerScience #Trees
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #ComputerScience #Trees
