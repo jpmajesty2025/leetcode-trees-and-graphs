@@ -56,4 +56,4 @@ By maintaining a single list `prev_values` where `prev_values[d]` stores the val
 
 Do you prefer validating tier constraints horizontally via BFS or vertically via preorder DFS?
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #TreeTraversal #DFS #BFS #Recursion #PerformanceOptimization
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #TreeTraversal #DFS #BFS #Recursion #PerformanceOptimization
