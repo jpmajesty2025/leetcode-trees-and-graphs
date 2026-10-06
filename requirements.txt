@@ -1,2 +1,4 @@
 pytest
 hypothesis
+beautifulsoup4
+requests
