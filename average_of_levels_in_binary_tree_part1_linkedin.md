@@ -1,6 +1,6 @@
 # Average of Levels: Streaming BFS & Clean Tier Reductions (Part 1 of 2) 🌲📈
 
-Calculating layer-by-layer metrics—like the average node value at each tree depth (LeetCode 637)—is a standard task in tree analytics. While Breadth-First Search (BFS) is the go-to tool, keeping execution strictly linear requires intentional container choices.
+Calculating layer-by-layer metrics—like the average node value at each tree depth—is a standard task in tree analytics. Breadth-First Search (BFS) is the go-to tool, but keeping execution strictly linear requires intentional container choices.
 
 Let's break down the optimal queue-based architecture!
 
@@ -18,7 +18,7 @@ Because the output is grouped strictly by horizontal depth, BFS is the natural m
 
 ### ⚙️ How Streaming BFS Works
 
-1. **Queue Setup**: Initialize a `collections.deque` with the root node.
+1. **Queue Setup**: Initialize a `deque` with the root node.
 2. **Level Snapshot**: At the start of each while loop iteration, capture `level_size = len(queue)`. Because all nodes currently in the queue belong to the active tier, this snapshot establishes the exact denominator.
 3. **Inner Loop**: Iterate `level_size` times using `popleft()`. Add each node's value to `current_sum` and enqueue its non-null left and right children.
 4. **Row Average**: Append `current_sum / level_size` to the result list.
@@ -29,7 +29,7 @@ Because the output is grouped strictly by horizontal depth, BFS is the natural m
 
 Avoid using a standard Python list with `pop(0)`. 
 
-Calling `pop(0)` on a dynamic array forces a left-shift of all remaining elements in memory—costing O(K) per pop. In a balanced tree where the bottom tier contains ~50% of all nodes, these repeated pointer shifts turn an O(N) traversal into an O(N²) bottleneck. Always use `collections.deque` for O(1) removals.
+Calling `pop(0)` on a dynamic array forces a left-shift of all remaining elements in memory—costing O(K) per pop. In a balanced tree where the bottom tier contains ~50% of all nodes, these repeated pointer shifts turn an O(N) traversal into an O(N²) bottleneck. It all happens under the hood but the cost is real! Always use `deque` for O(1) removals.
 
 ---
 
@@ -44,4 +44,4 @@ Calling `pop(0)` on a dynamic array forces a left-shift of all remaining element
 
 Do you default to BFS for level-based tree reductions?
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #TreeTraversal #BFS #PerformanceOptimization
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #TreeTraversal #BFS #PerformanceOptimization

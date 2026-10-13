@@ -2,12 +2,12 @@
 
 In Part 1, we refined graph traversal to eliminate dictionary hashing and redundant stack allocations.
 
-Yet, consider this architectural question:
+Now consider this architectural question:
 *Why build an adjacency list at all if our sole objective is counting connected components?*
 
-Building an adjacency graph requires $\mathcal{O}(V + E)$ auxiliary memory and $2 \times |E|$ list insertions before traversal even begins.
+Building an adjacency graph requires $\mathcal{O}(V + E)$ auxiliary memory and $2 \times |E|$ list insertions before we begin traversal to count connected components. Can we do better?
 
-**Disjoint Set Union (DSU / Union-Find)** solves the problem directly from raw edge tuples.
+ You bet! **Disjoint Set Union (DSU / Union-Find)** solves the problem directly from raw edge tuples.
 
 ---
 
@@ -47,8 +47,6 @@ where $\alpha$ is the Inverse Ackermann function ($\le 4$ for all practical inpu
 
 • **Static Graphs with Path Requirements**: DFS or BFS is great when you need to inspect path geometry or distances.
 • **Component Counting, Dynamic Edges, & Kruskal's MST**: Union-Find provides the cleanest, lowest-overhead architectural choice.
-
-Check out the clean, modular Union-Find implementation in the attached image! 📸
 
 How often do you reach for Union-Find in system partitioning or clustering tasks? Let's discuss below! 👇
 

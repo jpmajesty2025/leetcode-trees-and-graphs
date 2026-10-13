@@ -1,6 +1,6 @@
 # Average of Levels: Parallel DFS Accumulators vs. Queue Memory (Part 2 of 2) 🌲🧠
 
-In Part 1, we examined how BFS computes level averages on the fly (LeetCode 637). While BFS provides a clean horizontal sweep, Depth-First Search (DFS) offers an elegant alternative using parallel accumulator arrays—delivering massive memory savings on balanced trees.
+In Part 1, we examined how BFS computes level averages on the fly. While BFS provides a clean horizontal sweep, Depth-First Search (DFS) offers an elegant alternative using parallel accumulator arrays—delivering massive memory savings on balanced trees.
 
 Here is how depth-indexed DFS calculates level averages!
 
@@ -48,4 +48,4 @@ Both BFS and DFS achieve linear O(N) time complexity, but their memory footprint
 
 Do you prefer streaming BFS or depth-indexed DFS for tree reductions?
 
-#Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #TreeTraversal #DFS #BFS #Recursion #PerformanceOptimization
+#LearningInPublic #Python #SoftwareEngineering #DataStructures #Algorithms #LeetCode #CleanCode #TreeTraversal #DFS #BFS #Recursion #PerformanceOptimization

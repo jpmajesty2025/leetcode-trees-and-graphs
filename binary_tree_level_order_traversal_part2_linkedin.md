@@ -1,8 +1,6 @@
 # Level-Order Traversal with DFS: Subverting the Queue with Depth Indexing (Part 2 of 2) 🌲🧠
 
-When solving level-order traversal, most engineers immediately reach for a Breadth-First Search (BFS) queue. But did you know you can also solve it using Depth-First Search (DFS) recursion—and that DFS can significantly reduce memory overhead on wide trees?
-
-Here is how depth-indexed DFS works and how the two paradigms compare.
+Your instinctive solution is probably a Breadth-First Search (BFS) queue. But you can also solve it using Depth-First Search (DFS)—and that DFS can significantly reduce memory overhead on wide trees!
 
 ---
 

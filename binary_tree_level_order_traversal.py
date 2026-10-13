@@ -20,11 +20,11 @@ Constraints:
 '''
 
 from collections import deque
-from typing import Optional, List
+from typing import Optional
 from tree_node import TreeNode
 
 
-def level_order(root: Optional[TreeNode]) -> List[List[int]]:
+def level_order(root: Optional[TreeNode]) -> list[list[int]]:
     """Return the level order traversal of a binary tree's values using BFS.
 
     Time Complexity: O(N) where N is the total number of nodes in the binary tree.
@@ -33,12 +33,12 @@ def level_order(root: Optional[TreeNode]) -> List[List[int]]:
     if not root:
         return []
 
-    result: List[List[int]] = []
+    result: list[list[int]] = []
     queue: deque[TreeNode] = deque([root])
 
     while queue:
         level_size = len(queue)
-        current_level: List[int] = []
+        current_level: list[int] = []
 
         for _ in range(level_size):
             node = queue.popleft()

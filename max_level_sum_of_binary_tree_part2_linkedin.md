@@ -1,14 +1,12 @@
 # Maximum Level Sum: DFS Accumulation vs. Queue Memory (Part 2 of 2) 🌲🧠
 
-In Part 1, we explored finding the level with the maximum sum using BFS (LeetCode 1161). While BFS is intuitive for horizontal layers, Depth-First Search (DFS) provides a powerful alternative that drastically reduces memory consumption on balanced trees.
-
-Here is how depth-indexed DFS works and how its memory footprint compares to BFS.
+In Part 1, we explored finding the level with the maximum sum using BFS. It is the intuitive for horizontal layers, but Depth-First Search (DFS) provides a powerful alternative that drastically reduces memory consumption on balanced trees.
 
 ---
 
 ### 💡 The DFS Mental Model: Depth Accumulation
 
-Instead of sweeping horizontally level by level, DFS traverses vertically and accumulates sums into a dynamic array:
+DFS traverses vertically and accumulates sums into a dynamic array:
 
 1. **State Tracking**: Maintain a `level_sums` list where index `i` stores the sum of nodes at depth `i`.
 2. **Dynamic Allocation**: When visiting a node at `depth`, if `depth == len(level_sums)`, append `0` to allocate a new level sum.
