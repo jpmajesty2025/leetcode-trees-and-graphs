@@ -1,6 +1,6 @@
 # Binary Search Trees: The Power of O(1) Pointer Traversal (Part 1 of 2) 🌲⚡
 
-When navigating hierarchical data, the Binary Search Tree (BST) invariant is one of the most elegant structures in computer science. Finding a target value (LeetCode 700) showcases how binary decision routing cuts search spaces in half at every step.
+When navigating hierarchical data, the Binary Search Tree (BST) invariant is one of the most elegant structures in computer science. Finding a target value showcases how binary decision routing cuts search spaces in half at every step.
 
 Let's break down the mechanics and why iterative pointer traversal beats recursion in production!
 

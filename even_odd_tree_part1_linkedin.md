@@ -18,7 +18,9 @@ A binary tree is classified as **Even-Odd** if it satisfies two conditions acros
    - Every node must have an **even integer value**.
    - Values must be in **strictly decreasing** order from left to right.
 
-If any node violates its level's parity or monotonicity constraint, the entire tree is invalid.
+If any node violates its level's parity or monotonicity constraint, the tree is not Even-Odd.
+
+Goal: Given the root of a binary tree, return true if the binary tree is Even-Odd, otherwise return false.
 
 ---
 
